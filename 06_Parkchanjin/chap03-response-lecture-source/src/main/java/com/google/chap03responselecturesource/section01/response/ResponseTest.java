@@ -45,7 +45,7 @@ public class ResponseTest extends HttpServlet {
         .append("<html>");
 
 //    resp.setContentType("text/html"); // 응답 데이터의 MIME type 설정
-//    resp.setCharacterEncoding("UTF-8"); // 응답 데이터의 문제 셋 설정
+//    resp.setCharacterEncoding("UTF-8"); // 응답 데이터의 문제 셋 설정 tomcat 10이상이라 생략가능
 
     // 위 두개 하나로 합칠 경우 코드
     resp.setContentType("text/html; charset=UTF-8");
@@ -53,7 +53,7 @@ public class ResponseTest extends HttpServlet {
     // 클라이언트 브라우저와 연결된 출력 스트림 얻어오기
     PrintWriter printWriter = resp.getWriter();
     printWriter.print(sb.toString()); // html 코드 출력하기
-    printWriter.flush();
-    printWriter.close();
+    printWriter.flush(); // 종료구문
+    printWriter.close(); // 종료구문
   }
 }
